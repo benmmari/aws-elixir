@@ -3612,7 +3612,7 @@ defmodule AWS.S3 do
     else
       query_
     end
-    request(client, :get, path_, query_, headers, nil, options, nil)
+    request(client, :get, path_, query_, headers, %{}, options, nil)
   end
 
   @doc """
@@ -6389,7 +6389,7 @@ defmodule AWS.S3 do
   end
   defp add_query(url, query, client) do
     querystring = encode!(client, query, :query)
-    "#{url}?#{querystring}"
+    "#{url}&#{querystring}"
   end
 
   defp encode!(client, payload, format \\ :xml) do
